@@ -20,6 +20,7 @@ class SplashActivity : AppCompatActivity() {
                 putExtra("categories", categoriesList as Serializable)
             }
             startActivity(intent)
+            finish()
         })
     }
 }
