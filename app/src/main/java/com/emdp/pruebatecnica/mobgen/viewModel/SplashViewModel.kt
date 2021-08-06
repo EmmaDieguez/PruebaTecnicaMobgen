@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.emdp.pruebatecnica.mobgen.common.Utils
 import com.emdp.pruebatecnica.mobgen.database.GameOfThronesDb
 import com.emdp.pruebatecnica.mobgen.model.database.Categories
 import com.emdp.pruebatecnica.mobgen.service.ApiService
@@ -21,23 +22,6 @@ class SplashViewModel(app: Application) : AndroidViewModel(app) {
     private var categories: MutableLiveData<List<Categories>> = MutableLiveData()
     private var categoriesList: MutableList<Categories> = arrayListOf()
 
-    private var httpLoggingInterceptor = HttpLoggingInterceptor()
-        .setLevel(HttpLoggingInterceptor.Level.HEADERS)
-        .setLevel(HttpLoggingInterceptor.Level.BODY)
-
-    private var okHttpClient = OkHttpClient().newBuilder()
-        .connectTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(20, TimeUnit.SECONDS)
-        .addInterceptor(httpLoggingInterceptor)
-        .writeTimeout(20, TimeUnit.SECONDS)
-        .build()
-
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://private-anon-f141a44db8-androidtestmobgen.apiary-mock.com/")
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
     init {
         loadCategories()
     }
@@ -48,7 +32,8 @@ class SplashViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun loadCategories() {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = retrofit.create(ApiService::class.java).getCategories()
+            val utils : Utils.Companion = Utils
+            val call = utils.retrofit.create(ApiService::class.java).getCategories()
             val categoriesResponseList = call.body()
 
             run {

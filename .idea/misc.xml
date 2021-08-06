@@ -7,7 +7,10 @@
         <entry key="app/src/main/res/drawable/ic_got_background.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2296875" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.10104166666666667" />
+        <entry key="app/src/main/res/layout/adapter_category.xml" value="0.18342391304347827" />
+        <entry key="app/src/main/res/layout/fragment_category_list.xml" value="0.19270833333333334" />
       </map>
     </option>
   </component>

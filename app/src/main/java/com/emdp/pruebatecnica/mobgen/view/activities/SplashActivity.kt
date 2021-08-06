@@ -1,4 +1,4 @@
-package com.emdp.pruebatecnica.mobgen.view
+package com.emdp.pruebatecnica.mobgen.view.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
