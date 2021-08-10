@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Game Of Thrones</string>
+    <string name="btn_back">Back</string>
+    <string name="tv_categories">Categories</string>
+    <string name="tv_houses">Houses</string>
+    <string name="tv_books">Books</string>
+    <string name="tv_characters">Characters</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_region">Region</string>
+    <string name="tv_title">Title</string>
 </resources>

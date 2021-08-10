@@ -7,10 +7,16 @@
         <entry key="app/src/main/res/drawable/ic_got_background.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2296875" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.2296875" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.10104166666666667" />
+        <entry key="app/src/main/res/layout/adapter_books.xml" value="0.14739583333333334" />
         <entry key="app/src/main/res/layout/adapter_category.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/adapter_characters.xml" value="0.14739583333333334" />
+        <entry key="app/src/main/res/layout/adapter_houses.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_books_list.xml" value="0.17527173913043478" />
         <entry key="app/src/main/res/layout/fragment_category_list.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/fragment_characters_list.xml" value="0.17527173913043478" />
+        <entry key="app/src/main/res/layout/fragment_house_list.xml" value="0.17527173913043478" />
       </map>
     </option>
   </component>
