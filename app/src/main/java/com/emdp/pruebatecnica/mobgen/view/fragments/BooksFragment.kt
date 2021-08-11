@@ -9,24 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.emdp.pruebatecnica.mobgen.R
-import com.emdp.pruebatecnica.mobgen.model.api.BooksResponse
+import com.emdp.pruebatecnica.mobgen.listeners.OnBackPressedListener
 import com.emdp.pruebatecnica.mobgen.view.adapters.BooksAdapter
 import com.emdp.pruebatecnica.mobgen.viewModel.MainViewModel
 
 
-class BooksFragment : Fragment() {
-
-    private lateinit var mainViewModel: MainViewModel
-    private var books: MutableList<BooksResponse> = arrayListOf()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        mainViewModel.getAllBooks().observe(this, {
-            books = it as MutableList<BooksResponse>
-        })
-    }
+class BooksFragment : Fragment(), OnBackPressedListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,13 +22,26 @@ class BooksFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_books_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                adapter = BooksAdapter(books)
-            }
+        activity?.let {
+            val mainViewModel = ViewModelProvider(it, defaultViewModelProviderFactory)
+                .get(MainViewModel::class.java)
+
+            mainViewModel.getAllBooks().observe(viewLifecycleOwner, { booksList ->
+                booksList?.let {
+                    // Set the adapter
+                    if (view is RecyclerView) {
+                        with(view) {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter = BooksAdapter(context, it)
+                        }
+                    }
+                }
+            })
         }
         return view
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 }

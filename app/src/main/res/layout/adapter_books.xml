@@ -1,20 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/item_number"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_books"
+        android:layout_margin="6dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        card_view:cardBackgroundColor="@color/secondary_light"
+        card_view:cardCornerRadius="10dp">
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_book_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_isbn"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_isbn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_isbn"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_name"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_name" />
+
+            <TextView
+                android:id="@+id/tv_book_isbn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/ll_books_authors"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_isbn" />
+
+            <TextView
+                android:id="@+id/tv_authors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_authors"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_isbn"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_isbn" />
+
+            <LinearLayout
+                android:id="@+id/ll_books_authors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_pages"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_authors" />
+
+            <TextView
+                android:id="@+id/tv_pages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_num_of_pages"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_authors"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_authors" />
+
+            <TextView
+                android:id="@+id/tv_book_pages"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toEndOf="@+id/tv_pages"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_pages" />
+
+            <TextView
+                android:id="@+id/tv_publisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_publisher"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_pages"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_pages" />
+
+            <TextView
+                android:id="@+id/tv_book_publisher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_pages"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_publisher" />
+
+            <TextView
+                android:id="@+id/tv_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_country"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_publisher"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_publisher" />
+
+            <TextView
+                android:id="@+id/tv_book_country"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_publisher"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_country" />
+
+            <TextView
+                android:id="@+id/tv_media_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_media_type"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_country"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_country" />
+
+            <TextView
+                android:id="@+id/tv_book_media_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_country"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_media_type" />
+
+            <TextView
+                android:id="@+id/tv_released"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_released"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_media_type"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_media_type" />
+
+            <TextView
+                android:id="@+id/tv_book_released"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/primary_light"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_book_media_type"
+                card_view:layout_constraintTop_toTopOf="@+id/tv_released" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

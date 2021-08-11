@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Game Of Thrones</string>
+
     <string name="btn_back">Back</string>
+
     <string name="tv_categories">Categories</string>
     <string name="tv_houses">Houses</string>
     <string name="tv_books">Books</string>
@@ -8,4 +10,11 @@
     <string name="tv_name">Name</string>
     <string name="tv_region">Region</string>
     <string name="tv_title">Title</string>
+    <string name="tv_isbn">ISBN</string>
+    <string name="tv_authors">Authors</string>
+    <string name="tv_num_of_pages">Num. Of Pages</string>
+    <string name="tv_publisher">Publisher</string>
+    <string name="tv_country">Country</string>
+    <string name="tv_media_type">Media Type</string>
+    <string name="tv_released">Released</string>
 </resources>

@@ -1,9 +1,15 @@
 package com.emdp.pruebatecnica.mobgen.common
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class Utils {
@@ -25,5 +31,11 @@ class Utils {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getDate(date: String): String {
+            val format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+            return LocalDate.parse(date, format).toString()
+        }
     }
 }

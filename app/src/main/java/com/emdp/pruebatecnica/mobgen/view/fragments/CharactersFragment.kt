@@ -9,21 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.emdp.pruebatecnica.mobgen.R
-import com.emdp.pruebatecnica.mobgen.model.api.CharactersResponse
+import com.emdp.pruebatecnica.mobgen.listeners.OnBackPressedListener
 import com.emdp.pruebatecnica.mobgen.view.adapters.CharactersAdapter
 import com.emdp.pruebatecnica.mobgen.viewModel.MainViewModel
 
 
-class CharactersFragment : Fragment() {
-
-    private lateinit var mainViewModel: MainViewModel
-    private var characters: MutableList<CharactersResponse> = arrayListOf()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-    }
+class CharactersFragment : Fragment(), OnBackPressedListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,13 +22,26 @@ class CharactersFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_characters_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                adapter = CharactersAdapter(characters)
-            }
+        activity?.let {
+            val mainViewModel = ViewModelProvider(it, defaultViewModelProviderFactory)
+                .get(MainViewModel::class.java)
+
+            mainViewModel.getAllCharacters().observe(viewLifecycleOwner, { charactersList ->
+                charactersList?.let {
+                    // Set the adapter
+                    if (view is RecyclerView) {
+                        with(view) {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter = CharactersAdapter(it)
+                        }
+                    }
+                }
+            })
         }
         return view
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 }
