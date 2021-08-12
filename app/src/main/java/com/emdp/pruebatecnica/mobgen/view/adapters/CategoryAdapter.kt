@@ -1,5 +1,6 @@
 package com.emdp.pruebatecnica.mobgen.view.adapters
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import com.emdp.pruebatecnica.mobgen.listeners.OnCategoryClickListener
 import com.emdp.pruebatecnica.mobgen.model.database.Categories
 
 class CategoryAdapter(
-    private val values: List<Categories>
+    private var categories: List<Categories>
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private var listener : OnCategoryClickListener? = null
@@ -26,15 +27,16 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val category = values[position]
+        val category = categories[position]
+
         holder.contentView.text = category.categoryName
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             listener?.onItemClicked(category)
         }
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = categories.size
 
     inner class ViewHolder(binding: AdapterCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -47,5 +49,11 @@ class CategoryAdapter(
 
     fun setOnClickListener(clickListener: OnCategoryClickListener) {
         listener = clickListener
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun refreshAdapter(categoriesList: List<Categories>) {
+        categories = categoriesList
+        this.notifyDataSetChanged()
     }
 }
