@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -15,9 +14,10 @@
         card_view:cardBackgroundColor="@color/secondary_light"
         card_view:cardCornerRadius="10dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:columnCount="2"
             android:padding="20dp">
 
             <TextView
@@ -26,19 +26,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_name"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_isbn"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_name" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_isbn"
@@ -47,19 +43,16 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_isbn"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_name"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_name" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_isbn"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/ll_books_authors"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_isbn" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_authors"
@@ -68,18 +61,15 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_authors"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_isbn"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_isbn" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/ll_books_authors"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_pages"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_authors" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
 
             <TextView
                 android:id="@+id/tv_pages"
@@ -88,20 +78,16 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_num_of_pages"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_authors"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_authors" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_pages"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toEndOf="@+id/tv_pages"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_pages" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_publisher"
@@ -110,19 +96,16 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_publisher"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_pages"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_pages" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_publisher"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_pages"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_publisher" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_country"
@@ -131,19 +114,16 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_country"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_publisher"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_publisher" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_country"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_publisher"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_country" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_media_type"
@@ -152,19 +132,16 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_media_type"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_country"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_country" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_media_type"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_country"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_media_type" />
+                android:textColor="@color/primary_light" />
 
             <TextView
                 android:id="@+id/tv_released"
@@ -173,20 +150,17 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_released"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_media_type"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_book_media_type" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_book_released"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textColor="@color/primary_light"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="@+id/tv_book_media_type"
-                card_view:layout_constraintTop_toTopOf="@+id/tv_released" />
+                android:textColor="@color/primary_light" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </GridLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

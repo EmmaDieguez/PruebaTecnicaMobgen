@@ -7,7 +7,7 @@ class BooksResponse (
     @SerializedName("name") var name : String,
     @SerializedName("isbn") var isbn : String,
     @SerializedName("authors") var authors : List<String>,
-    @SerializedName("numberOfPages") var numberOfPages : Int,
+    @SerializedName("numberOfPages") var numberOfPages : Int = 0,
     @SerializedName("publisher") var publisher : String,
     @SerializedName("country") var country : String,
     @SerializedName("mediaType") var mediaType : String,

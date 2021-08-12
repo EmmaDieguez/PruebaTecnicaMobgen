@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.10104166666666667" />
         <entry key="app/src/main/res/layout/adapter_books.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_category.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/adapter_characters.xml" value="0.14739583333333334" />
+        <entry key="app/src/main/res/layout/adapter_characters.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_houses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_item.xml" value="0.21614583333333334" />
         <entry key="app/src/main/res/layout/fragment_books_list.xml" value="0.17527173913043478" />

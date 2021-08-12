@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.emdp.pruebatecnica.mobgen.common.Utils
 import com.emdp.pruebatecnica.mobgen.databinding.AdapterHousesBinding
 import com.emdp.pruebatecnica.mobgen.model.api.HousesResponse
 
@@ -14,6 +15,8 @@ import com.emdp.pruebatecnica.mobgen.model.api.HousesResponse
 class HousesAdapter(
     private val houses: List<HousesResponse>
 ) : RecyclerView.Adapter<HousesAdapter.ViewHolder>() {
+
+    private val utils : Utils.Companion = Utils
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -42,18 +45,9 @@ class HousesAdapter(
             holder.ivHouses.visibility = View.GONE
         }
 
-        holder.tvHousesName.text = house.name
-        holder.tvHousesRegion.text = house.region
-
-        if (null != house.title && "" != house.title.trim()) {
-            holder.tvTitle.visibility = View.VISIBLE
-            holder.tvHousesTitle.visibility = View.VISIBLE
-
-            holder.tvHousesTitle.text = house.title
-        } else {
-            holder.tvTitle.visibility = View.GONE
-            holder.tvHousesTitle.visibility = View.GONE
-        }
+        utils.showHideViewItems(holder.tvName, holder.tvHousesName, house.name)
+        utils.showHideViewItems(holder.tvRegion, holder.tvHousesRegion, house.region)
+        utils.showHideViewItems(holder.tvTitle, holder.tvHousesTitle, house.title)
     }
 
     private fun loadUrl(region: String): String? {
@@ -74,11 +68,14 @@ class HousesAdapter(
     override fun getItemCount(): Int = houses.size
 
     inner class ViewHolder(binding: AdapterHousesBinding) : RecyclerView.ViewHolder(binding.root) {
+        val tvName: TextView = binding.tvName
+        val tvRegion: TextView = binding.tvRegion
+        val tvTitle: TextView = binding.tvTitle
+
         val ivHouses: ImageView = binding.ivHouses
         val tvHousesName: TextView = binding.tvHousesName
         val tvHousesRegion: TextView = binding.tvHousesRegion
         val tvHousesTitle: TextView = binding.tvHousesTitle
-        val tvTitle: TextView = binding.tvTitle
 
         override fun toString(): String {
             return super.toString() + " '" + tvHousesName.text + "'" +

@@ -32,7 +32,7 @@ class CharactersFragment : Fragment(), OnBackPressedListener {
                     if (view is RecyclerView) {
                         with(view) {
                             layoutManager = LinearLayoutManager(context)
-                            adapter = CharactersAdapter(it)
+                            adapter = CharactersAdapter(context, it)
                         }
                     }
                 }
